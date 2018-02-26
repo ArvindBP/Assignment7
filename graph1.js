@@ -2,12 +2,15 @@ graph1();
 
 function graph1(){
 
-var margin = {top: 20, right: 20, bottom: 30, left: 150},
+var margin = {top: 20, right: 20, bottom: 30, left: 60},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 // parse the date / time
 var parseTime = d3v3.timeParse("%Y");
+
+
+
 
 // set the ranges
 var x = d3v3.scaleTime().range([0, width]);
@@ -22,9 +25,9 @@ var valueline2 = d3v3.line()
     .x(function(d) { return x(d.year); })
     .y(function(d) { return y(d.noarrest); });
   
-// append the svg obgect to the body of the page
-// appends a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
+
+// appends a element to 'svg'
+
 var svg = d3v3.select("#graph2").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -61,11 +64,15 @@ function draw(data) {
   // Add the X Axis
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3v3.axisBottom(x));
+      .call(d3v3.axisBottom(x) .ticks(16));
 
   // Add the Y Axis
   svg.append("g")
-      .call(d3v3.axisLeft(y));
+      .call(d3v3.axisLeft(y))
+      
+
+ 
+
   }
 // Get the data
 d3.json("assault1.json", function(error, data) {
