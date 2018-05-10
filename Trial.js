@@ -1,25 +1,25 @@
 const fs = require('fs');
 const readline = require('readline');
 const stream = require('stream');
+const fs1 = require('fs');
 const instream = fs.createReadStream('chicagocrimes.csv');
 const outstream = new stream;
-const fs1 = require('fs');
 let writeStream1 = fs1.createWriteStream('theft1.json');
 const fs2 = require('fs'); //module required to read the files
 let writeStream2 = fs2.createWriteStream('assault1.json');
 const rl = readline.createInterface(instream,outstream);
-var lines;
-var a = 0;
+let lines;
+let a = 0;
 const theft = new RegExp('(.*)(THEFT)(.*)');
 const over = new RegExp('(.*)(OVER)(.*)');
 const under = new RegExp('(.*)(AND UNDER)(.*)');
 const assault = new RegExp('(.*)(ASSAULT)(.*)');
-var class1 = [];
-var class2 = [];
-for(var i = 2001;i<=2016;i++)
+let class1 = [];
+let class2 = [];
+for(let i = 2001;i<=2016;i++)
 {
-	var obj1 = {};
-	var obj = {};
+	let obj1 = {};
+	let obj = {};
 	obj.year = i;
 	obj.under = 0;
 	obj.over = 0;
